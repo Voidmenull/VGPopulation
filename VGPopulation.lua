@@ -1,7 +1,5 @@
 VGPopulation = CreateFrame("Frame",nil);
 
-VGPopulation:RegisterEvent("ADDON_LOADED")
-
 VGPopulation.Time = 0
 VGPopulation.Counter = 0
 VGPopulation.End = 0
@@ -21,15 +19,8 @@ function VGPopulation:OnUpdate()
 	end
 end
 
+VGPopulation:SetScript("OnUpdate", VGPopulation.OnUpdate)
 
--- sort later for speed
-function VGPopulation:OnEvent()
-	if event == "ADDON_LOADED" and arg1 == "VGPopulation" then 
-	end
-end
-	
-VGPopulation:SetScript("OnEvent", VGPopulation.OnEvent)
-VGPopulation:SetScript("OnUpdate", VGPopulation.OnUpdate);
 VGPopulation.Zones = 
 {
 	"Elwynn",
@@ -96,8 +87,6 @@ VGPopulation.Zones =
 	"Naxxramas",
 	"Warsong",
 }
-
-
 
 function VGPopulation:CountPopulation()
 	VGPopulation.End = getn(VGPopulation.Zones)
