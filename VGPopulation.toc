@@ -1,0 +1,7 @@
+## Interface: 11200
+## Title: Vanilla Gaming Population Counter
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables:
+
+VGPopulation.lua
