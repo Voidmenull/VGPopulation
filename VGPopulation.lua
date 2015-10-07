@@ -12,7 +12,7 @@ function VGPopulation:OnUpdate()
 		SendWho(VGPopulation.Zones[VGPopulation.Counter])
 		local numWhos = GetNumWhoResults()
 		VGPopulation.Players = VGPopulation.Players + numWhos
-		DEFAULT_CHAT_FRAME:AddMessage("Players: "..VGPopulation.Players.." -- Progress:"..VGPopulation.Counter.."/"..VGPopulation.End)
+		DEFAULT_CHAT_FRAME:AddMessage("Players: "..VGPopulation.Players.." -- Progress: "..VGPopulation.Counter.."/"..VGPopulation.End)
 		VGPopulation.Time = GetTime()
 		VGPopulation.Counter = VGPopulation.Counter + 1
 		if VGPopulation.Counter > VGPopulation.End then VGPopulation.Trigger = 0 end
@@ -86,6 +86,47 @@ VGPopulation.Zones =
 	"Ahn'Qiraj", -- both dungeons
 	"Naxxramas",
 	"Warsong",
+	-- citys
+	"Darnassus",
+	"Auberdine",
+	"Everlook",
+	"Astranaar",
+	"Splittertree",
+	"Stonetalon",
+	"Nijel's",
+	"Orgrimmar",
+	"Crossroads",
+	"Ratchet",
+	"Bluff",
+	"Shadowprey",
+	"Taurajo",
+	"Theramore",
+	"Feathermoon",
+	"Mojache",
+	"Thalanaar",
+	"Freewind",
+	"Cenarion",
+	"Gadgetzan",
+	"Undercity",
+	"Sepulcher",
+	"Aerie",
+	"Tarren",
+	"Southshore",
+	"Revantusk",
+	"Hammerfall",
+	"Menethil",
+	"Ironforge",
+	"Thelsamar",
+	"Kargath",
+	"Stormwind",
+	"Lakeshire",
+	"Senetil",
+	"Darkshire",
+	"Stonard",
+	"Grom'gol",
+	"Booty",
+	
+	
 }
 
 function VGPopulation:CountPopulation()
