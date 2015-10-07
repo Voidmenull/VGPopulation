@@ -4,18 +4,25 @@ VGPopulation.Time = 0
 VGPopulation.Counter = 0
 VGPopulation.End = 0
 VGPopulation.Trigger = 0
-VGPopulation.Delay = 0.2
+VGPopulation.Delay = 0.1
 VGPopulation.Players = 0
+VGPopulation.Mode = 0
+
 
 function VGPopulation:OnUpdate()
-	if GetTime() >= VGPopulation.Time + VGPopulation.Delay and VGPopulation.Trigger == 1 and VGPopulation.Counter >= 1 then
+	if VGPopulation.Trigger == 1 and VGPopulation.Mode == 1 and GetTime() >= VGPopulation.Time + VGPopulation.Delay and VGPopulation.Counter >= 1 then
 		SendWho(VGPopulation.Zones[VGPopulation.Counter])
+		VGPopulation.Time = GetTime()
+		VGPopulation.Mode = 2
+		
+	elseif VGPopulation.Trigger == 1 and VGPopulation.Mode == 2 and GetTime() >= VGPopulation.Time + VGPopulation.Delay and VGPopulation.Counter >= 1 then
 		local numWhos = GetNumWhoResults()
 		VGPopulation.Players = VGPopulation.Players + numWhos
 		DEFAULT_CHAT_FRAME:AddMessage("Players: "..VGPopulation.Players.." -- Progress: "..VGPopulation.Counter.."/"..VGPopulation.End)
 		VGPopulation.Time = GetTime()
 		VGPopulation.Counter = VGPopulation.Counter + 1
-		if VGPopulation.Counter > VGPopulation.End then VGPopulation.Trigger = 0 end
+		VGPopulation.Mode = 1
+		if VGPopulation.Counter > VGPopulation.End then VGPopulation.Trigger = 0; VGPopulation.Mode = 0 end
 	end
 end
 
@@ -26,7 +33,7 @@ VGPopulation.Zones =
 	"Elwynn",
 	"Morogh",
 	"Tirisfal",
-	"Modan",
+	"Modan",	
 	"Silverpine",
 	"Westfall",
 	"Redridge",
@@ -92,7 +99,7 @@ VGPopulation.Zones =
 	"Bluff",
 	"Undercity",
 	"Ironforge",
-	"Stormwind",
+	"Stormwind"
 }
 
 function VGPopulation:CountPopulation()
@@ -100,4 +107,5 @@ function VGPopulation:CountPopulation()
 	VGPopulation.Players = 0
 	VGPopulation.Counter = 1
 	VGPopulation.Trigger = 1
+	VGPopulation.Mode = 1
 end
