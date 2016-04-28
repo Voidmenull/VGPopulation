@@ -12,7 +12,7 @@ VGPopulation.Mode = 0
 function VGPopulation:OnUpdate()
 	if VGPopulation.Trigger == 1 and VGPopulation.Mode == 1 and VGPopulation.Counter >= 1 then
 		SendWho(VGPopulation.List[VGPopulation.Counter])
-		VGPopulation.Mode = 2
+		VGPopulation.Mode = 2	
 	end
 end
 
@@ -22,6 +22,8 @@ function VGPopulation:OnEvent()
 			local numWhos = GetNumWhoResults()
 			if numWhos >= 50 then DEFAULT_CHAT_FRAME:AddMessage("Wanrning: Count can be incorrect, 50+ players detected",1,0,0) end
 			VGPopulation.Players = VGPopulation.Players + numWhos
+			VGPopulation.CountFont:SetText("")
+			VGPopulation.TimeFont:SetText("")
 			VGPopulation.CountFont:SetText("Players Found: "..VGPopulation.Players)
 			VGPopulation.TimeFont:SetText("Progress: "..floor((VGPopulation.Counter/VGPopulation.End)*100).." %")	
 			VGPopulation.Counter = VGPopulation.Counter + 1
